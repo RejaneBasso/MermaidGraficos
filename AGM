@@ -1,0 +1,67 @@
+graph TD
+    %% Nós Principais
+    Raiz[("Atos da Advocacia-Geral (AGM)")]
+
+    %% 1. ATOS OPINATIVOS (Consultivo)
+    subgraph Consultivo["Atos Opinativos e de Análise"]
+        %% Nó estrutural
+        Cat_Cons[Atos Opinativos]:::catNode
+        
+        Info["<b>INFORMAÇÃO</b>"]
+        PSingular["<b>PARECER SINGULAR</b>"]
+        PColetivo["<b>PARECER COLETIVO</b>"]
+        PReferencial["<b>PARECER REFERENCIAL</b>"]
+    end
+
+    %% 2. ATOS NORMATIVOS
+    subgraph Normativo["Atos Normativos e Regulamentares"]
+        Cat_Norm[Atos Normativos]:::catNode
+        IN["<b>INSTRUÇÃO NORMATIVA</b>"]
+        Resolucao["<b>RESOLUÇÃO</b>"]
+        Sumula["<b>SÚMULA</b>"]
+    end
+
+    %% 3. ATOS DE EXPEDIENTE
+    subgraph Expediente["Atos de Expediente e Padronização"]
+        Cat_Exp[Atos de Expediente]:::catNode
+        Despacho["<b>DESPACHO</b>"]
+        Orientacao["<b>ORIENTAÇÃO</b>"]
+        Manual["<b>MANUAL</b>"]
+        POP["<b>POP</b>"]
+        Boletim[/"<b>BOLETIM INFORMATIVO</b>"/]
+    end
+
+    %% Conexões da Raiz para as Categorias
+    Raiz --> Cat_Cons
+    Raiz --> Cat_Norm
+    Raiz --> Cat_Exp
+
+    %% Conexões Internas - Consultivo (Agora todos no mesmo nível)
+    Cat_Cons --> Info
+    Cat_Cons --> PSingular
+    Cat_Cons --> PColetivo
+    Cat_Cons --> PReferencial
+
+    %% Conexões Internas - Normativo
+    Cat_Norm --> IN
+    Cat_Norm --> Resolucao
+    Cat_Norm --> Sumula
+
+    %% Conexões Internas - Expediente
+    Cat_Exp --> Despacho
+    Cat_Exp --> Orientacao
+    Cat_Exp --> Manual
+    Cat_Exp --> POP
+    Cat_Exp --> Boletim
+
+    %% Estilização
+    classDef main fill:#2c3e50,stroke:#fff,stroke-width:2px,color:#fff;
+    classDef catNode fill:#7f8c8d,stroke:#none,color:#fff,font-size:12px;
+    classDef type fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff;
+    classDef pub fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff;
+
+    class Raiz main;
+    class Cat_Cons,Cat_Norm,Cat_Exp catNode;
+    %% Apliquei o estilo principal (type) para os novos nós de Parecer
+    class Info,PSingular,PColetivo,PReferencial,IN,Resolucao,Sumula,Despacho,Orientacao,Manual,POP type;
+    class Boletim pub;
