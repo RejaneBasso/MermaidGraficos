@@ -1,6 +1,6 @@
 ---
 config:
-  layout: dagre
+  layout: elk
 ---
 flowchart TB
  subgraph Consultivo["<br>"]
@@ -24,7 +24,7 @@ flowchart TB
         POP["<b>POP</b>"]
         Boletim[/"<b>BOLETIM INFORMATIVO</b>"/]
   end
-    Raiz[("Atos Normativos da AGM")] -.- Atributos@{ label: "<b>ATRIBUTOS COMUNS</b><br>------------------<br>+ ID*<br>+ Tipo_Numero (sequencial/anual)*<br>+ Autor*<br>+ Data_Emissao*<br><span style=\"padding-left:\">+ Descricao*<br></span><span style=\"padding-left:\">+ Ano*<br></span><span style=\"padding-left:\">+ Numero</span><br><br>" }
+    Raiz[("Atos Normativos da AGM")] -.- Atributos@{ label: "<b>ATRIBUTOS COMUNS</b><br>------------------<br>+ ID*<br>+ Tipo_Numero (sequencial/anual)*<br>+ Autor*<br><span style=\"padding-left:\">+ Visibilidade (privado/publico)*</span><br>+ Data_Emissao*<br><span style=\"padding-left:\">+ Descricao*<br></span><span style=\"padding-left:\">+ Ano*<br></span><span style=\"padding-left:\">+ Numero</span>" }
     Raiz --> Cat_Cons & Cat_Norm & Cat_Exp
     Cat_Cons --> Info & PSingular & PColetivo & PReferencial
     Cat_Norm --> IN & Resolucao & Sumula
