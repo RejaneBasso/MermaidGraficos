@@ -1,6 +1,6 @@
 ---
 config:
-  layout: elk
+  layout: dagre
   theme: default
 ---
 flowchart TB
@@ -31,10 +31,10 @@ de Expediente"]
     Cat_Cons --> Info & PSingular & PColetivo & PReferencial
     Cat_Norm --> IN & Resolucao & Sumula
     Cat_Exp --> Despacho & Orientacao & Manual & POP & Boletim
-    Cat_Cons -.- AttrOpinativos["<b>ATRIBUTOS ATOS OPINATIVOS</b><br>+ Processo Administrativo<br>+ Consulente*<br>+ Objeto*<br>+ Destino*<br>+ Ementa*<br>+ Equipe/Procuradoria*<br>+ Área Temática*<br>+ Caráter Jurídico-Normativo (Sim / Não se Aplica)*<br>+ Homologação Prefeito (Sim / Não se Aplica)*"]
-    Cat_Norm -.- AttrNormativos@{ label: "<b>ATRIBUTOS ATOS NORMATIVOS</b><br><span style=\"padding-left:\">+ Processo Administrativo</span><br>+ Ementa*<br><br>" }
+    Cat_Cons -.- AttrOpinativos["<b>ATRIBUTOS ESPECÍFICOS</b><br>+ Processo Administrativo<br>+ Consulente*<br>+ Objeto*<br>+ Destino*<br>+ Ementa*<br>+ Equipe/Procuradoria*<br>+ Área Temática*<br>+ Caráter Jurídico-Normativo (Sim / Não se Aplica)*<br>+ Homologação Prefeito (Sim / Não se Aplica)*"]
+    Cat_Norm -.- AttrNormativos@{ label: "<b>ATRIBUTOS ESPECÍFICOS</b><br><span style=\"padding-left:\">+ Processo Administrativo</span><br>+ Ementa*<br><br>" }
     Sumula -.- AttrSumula["<b>REGRA DE NUMERAÇÃO</b><br>Sequencial PERMANENTE.<br>NÃO reinicia a cada ano."]
-    Manual -.- AttrAberto["<b>TIPO GENÉRICO</b><br><br>(Apenas Atributos Gerais)"]
+    Manual -.- AttrAberto["<b>TIPO GENÉRICO</b><br>(Apenas Atributos Gerais)"]
     POP -.- AttrAberto
     Boletim -.- AttrAberto
     Orientacao -.- AttrAberto
