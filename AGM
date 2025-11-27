@@ -1,6 +1,6 @@
 ---
 config:
-  layout: fixed
+  layout: elk
   theme: default
 ---
 flowchart TB
@@ -26,21 +26,22 @@ de Expediente"]
         POP["<b>POP</b>"]
         Boletim[/"<b>BOLETIM INFORMATIVO</b>"/]
   end
-    Raiz[("Atos Normativos da AGM")] -.- Atributos["<b>ATRIBUTOS GERAIS (Generalização)</b><br>------------------<br>+ ID*<br>+ Tipo_Documento*<br>+ Numero (Reinicia por ano, exceto Súmula)*<br>+ Ano*<br>+ Descrição*<br>+ Autor/Procurador*<br>+ Data_Emissao*<br>+ Visibilidade (Público/Privado)*<br>+ Localização/Pasta GED*<br><br><b>CONTROLE DE VIGÊNCIA</b><br>+ Status (Homologado/Vigente | Revogado/Rejeitado)*<br>+ Data_Status (Obrigatório se alterado)<br>------------------<br><b>SE REVOGADO/REJEITADO:</b><br>+ Ato Substituto (Link/Referência)<br>+ Motivo da Revogação/Rejeição*"]
+    Raiz[("Atos Normativos da AGM")] -.- Atributos["<b>ATRIBUTOS GERAIS (Generalização)</b><br>------------------<br>+ ID\*<br>+ Tipo_Documento\*<br>+ Numero (Reinicia por ano, exceto Súmula)\*<br>+ Ano\*<br>+ Descrição\*<br>+ Autor/Procurador*<br>+ Data_Emissao*<br>+ Visibilidade (Público/Privado)\*<br>+ Localização/Pasta GED\*<br><br><b>CONTROLE DE VIGÊNCIA</b><br>+ Status (Homologado/Vigente | Revogado/Rejeitado)\*<br>+ Data_Status (Obrigatório se alterado)<br>------------------<br><b>SE REVOGADO/REJEITADO:</b><br>+ Ato Substituto (Link/Referência)<br>+ Motivo da Revogação/Rejeição"]
     Raiz --> Cat_Cons & Cat_Norm & Cat_Exp
     Cat_Cons --> Info & PSingular & PColetivo & PReferencial
     Cat_Norm --> IN & Resolucao & Sumula
     Cat_Exp --> Despacho & Orientacao & Manual & POP & Boletim
-    Cat_Cons -.- AttrOpinativos["<b>ATRIBUTOS ATOS OPINATIVOS</b><br>+ Processo Administrativo<br>+ Consulente*<br>+ Objeto*<br>+ Destino*<br>+ Ementa*<br>+ Equipe/Procuradoria*<br>+ Área Temática*<br>+ Caráter Jurídico-Normativo (Sim / Não se Aplica)<br>+ Homologação Prefeito (Sim / Não se Aplica)"]
-    Cat_Norm -.- AttrNormativos["<b>ATRIBUTOS ATOS NORMATIVOS</b><br>+ Ementa*<br>+ Processo Administrativo"]
+    Cat_Cons -.- AttrOpinativos["<b>ATRIBUTOS ATOS OPINATIVOS</b><br>+ Processo Administrativo<br>+ Consulente*<br>+ Objeto*<br>+ Destino*<br>+ Ementa*<br>+ Equipe/Procuradoria*<br>+ Área Temática*<br>+ Caráter Jurídico-Normativo (Sim / Não se Aplica)*<br>+ Homologação Prefeito (Sim / Não se Aplica)*"]
+    Cat_Norm -.- AttrNormativos@{ label: "<b>ATRIBUTOS ATOS NORMATIVOS</b><br><span style=\"padding-left:\">+ Processo Administrativo</span><br>+ Ementa*<br><br>" }
     Sumula -.- AttrSumula["<b>REGRA DE NUMERAÇÃO</b><br>Sequencial PERMANENTE.<br>NÃO reinicia a cada ano."]
-    Manual -.- AttrAberto["<b>TIPO ABERTO/GENÉRICO</b><br>Cadastros Simplificados<br>(Apenas Atributos Gerais)"]
+    Manual -.- AttrAberto["<b>TIPO GENÉRICO</b><br><br>(Apenas Atributos Gerais)"]
     POP -.- AttrAberto
     Boletim -.- AttrAberto
     Orientacao -.- AttrAberto
     Despacho -.- AttrAberto
 
     Atributos@{ shape: rect}
+    AttrNormativos@{ shape: rect}
      Cat_Cons:::catNode
      Info:::type
      PSingular:::type
